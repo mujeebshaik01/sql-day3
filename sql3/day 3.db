@@ -1,0 +1,31 @@
+-- 1. Select all users
+SELECT * FROM library_users;
+
+-- 2. Select specific columns
+SELECT user_id, name, membership_type FROM library_users;
+
+-- 3. Filter users who are active
+SELECT name, membership_type FROM library_users
+WHERE status = 'active';
+
+-- 4. Users with gold membership OR overdue books
+SELECT name, email FROM library_users
+WHERE membership_type = 'Gold' OR books_overdue > 0;
+
+-- 5. Find users whose name starts with 'S'
+SELECT name, city FROM library_users
+WHERE name LIKE 'S%';
+
+-- 6. Users aged between 20 and 30
+SELECT name, age FROM library_users
+WHERE age BETWEEN 20 AND 30;
+
+-- 7. Order by number of borrowed books (descending)
+SELECT name, books_borrowed FROM library_users
+ORDER BY books_borrowed DESC;
+
+-- 8. Top 3 active users by number of books borrowed
+SELECT name, books_borrowed FROM library_users
+WHERE status = 'active'
+ORDER BY books_borrowed DESC
+LIMIT 3;
